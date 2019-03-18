@@ -5,7 +5,6 @@ import io.zipcoder.utils.Item;
 import java.util.Comparator;
 
 public class GroceryComparator implements Comparator<String> {
-    @Override
     public int compare(String string1, String string2) {
         if (string1.equals("cookies") && string2.equals("bread") || string2.equals("cookies") && string1.equals("bread")) {
             return string1.compareTo(string2);
