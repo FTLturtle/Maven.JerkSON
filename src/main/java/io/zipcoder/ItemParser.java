@@ -37,7 +37,7 @@ public class ItemParser {
 
     private String[] getSingleItemArray(String singleItem) {
         singleItem = singleItem.replaceAll("#", "");
-        singleItem = singleItem.replaceAll("(?<=\\w)0(?=(\\w))", "o");
+        singleItem = singleItem.replaceAll("(?<=[a-zA-Z])0(?=[a-zA-Z])", "o");
         singleItem = singleItem.toLowerCase();
         return singleItem.split(";|([:!@^*%](?=(name|price|type|expiration)))");
     }

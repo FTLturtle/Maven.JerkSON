@@ -33,7 +33,7 @@ public class GroceryReporter {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         int numberOfItems;
-        int numberOfItemsAtPrice;
+        int numberOfItemsAtPrice = 0;
         Map<Double, Integer> itemPriceMap;
 
         for (String key : itemMap.keySet()) {
@@ -53,17 +53,42 @@ public class GroceryReporter {
                 stringBuilder.append(String.format("Price: \t %4.2f\t\t seen: %d times\n", price, numberOfItemsAtPrice))
                 .append("-------------\t\t -------------\n");
             }
+            if (numberOfItemsAtPrice == 1) {
+                stringBuilder.replace(stringBuilder.length() - 32, stringBuilder.length(), "\n");
+            }
             stringBuilder.append("\n");
         }
 
         stringBuilder.replace(stringBuilder.length() - 31, stringBuilder.length(), "");
 
-        stringBuilder.append(String.format("\nErrors         \t \t seen: %d times", numberOfErrors));
+        stringBuilder.append(String.format("\nErrors         \t \t seen: %d times\n", numberOfErrors));
 
         return stringBuilder.toString();
     }
 
     public static void main(String[] args) {
-
+        String string = "name:    Milk \t\t seen: 6 times\n" +
+                "============= \t \t =============\n" +
+                "Price: \t 3.23\t\t seen: 5 times\n" +
+                "-------------\t\t -------------\n" +
+                "Price:   1.23\t\t seen: 1 time\n" +
+                "\n" +
+                "name:   Bread\t\t seen: 6 times\n" +
+                "=============\t\t =============\n" +
+                "Price:   1.23\t\t seen: 6 times\n" +
+                "-------------\t\t -------------\n" +
+                "\n" +
+                "name: Cookies     \t seen: 8 times\n" +
+                "=============     \t =============\n" +
+                "Price:   2.25        seen: 8 times\n" +
+                "-------------        -------------\n" +
+                "\n" +
+                "name:  Apples     \t seen: 4 times\n" +
+                "=============     \t =============\n" +
+                "Price:   0.25     \t seen: 2 times\n" +
+                "-------------     \t -------------\n" +
+                "Price:   0.23  \t \t seen: 2 times\n" +
+                "\n" +
+                "Errors         \t \t seen: 4 times\n";
     }
 }
