@@ -41,8 +41,8 @@ public class GroceryReporter {
             appendItemString(output, key);
             appendAllPriceStringsForItem(output, key);
         }
-        output.replace(output.length() - 31, output.length(), "");
-        output.append(String.format("\nErrors         \t \t seen: %d times\n", numberOfErrors));
+        output.replace(output.length() - 36, output.length(), "");
+        output.append(String.format("\nErrors               seen: %d times\n", numberOfErrors));
         return output.toString();
     }
 
@@ -50,8 +50,8 @@ public class GroceryReporter {
         int numberOfItems;
         numberOfItems = itemMap.get(key).size();
         String keyUpperCase = key.substring(0,1).toUpperCase() + key.substring(1);
-        output.append(String.format("name:%8s \t\t seen: %d times\n", keyUpperCase, numberOfItems))
-                .append("============= \t \t =============\n");
+        output.append(String.format("name:%8s        seen: %d times\n", keyUpperCase, numberOfItems))
+                .append("=============        =============\n");
     }
 
     private void appendAllPriceStringsForItem(StringBuilder output, String key) {
@@ -73,11 +73,11 @@ public class GroceryReporter {
         int numberOfItemsAtPrice = 0;
         for (Double price : itemPriceMap.keySet()) {
             numberOfItemsAtPrice = itemPriceMap.get(price);
-            output.append(String.format("Price: \t %4.2f\t\t seen: %d times\n", price, numberOfItemsAtPrice))
-            .append("-------------\t\t -------------\n");
+            output.append(String.format("Price:   %4.2f        seen: %d times\n", price, numberOfItemsAtPrice))
+            .append("-------------        -------------\n");
         }
         if (numberOfItemsAtPrice == 1) {
-            output.replace(output.length() - 32, output.length(), "\n");
+            output.replace(output.length() - 37, output.length() - 36, "");
         }
     }
     
